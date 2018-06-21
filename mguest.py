@@ -38,20 +38,22 @@ if proc.returncode == 0:
         # changing wifi password
         subprocess.call(['nmcli', 'con', 'mod', 'M-Guest', '+802-11-wireless-security.psk', new_pass])
         # connecting to wifi
-        #subprocess.call(['nmcli', 'con', 'up', 'M-Guest'])
+        subprocess.call(['nmcli', 'con', 'up', 'M-Guest'])
     else:
         print('Old password is still valid')
 else:
     # add new wifi network
     subprocess.call(['nmcli', 'device', 'wifi', 'connect', 'M-Guest', 'password', new_pass])
 
+string_width = len(new_pass)
+#print(string_width)
 # print(date_til)
 # print(datetime.now())
 print('')
-print(46 * '-')
-print('|' + str(item_list[-6]).center(25) + '|' + str(item_list[-5]).center(18) + '|')
-print(46 * '-')
-print('|' + str(item_list[-4]).center(25) + '|' + str(item_list[-3]).center(18) + '|')
-print(46 * '-')
-print('|' + str(item_list[-2]).center(25) + '|' + str(new_pass).center(18) + '|')
-print(46 * '-')
+print(30 * '-' + int(string_width) * '-')
+print('|' + str(item_list[-6]).center(25) + '| ' + str(item_list[-5]).center(int(string_width)) + ' |')
+print(30 * '-' + int(string_width) * '-')
+print('|' + str(item_list[-4]).center(25) + '| ' + str(item_list[-3]).center(int(string_width)) + ' |')
+print(30 * '-' + int(string_width) * '-')
+print('|' + str(item_list[-2]).center(25) + '| ' + str(new_pass).center(int(string_width)) + ' |')
+print(30 * '-' + int(string_width) * '-')
